@@ -21,6 +21,7 @@ from rest_framework import routers
 
 from gprest.views import PostView
 from gprest.models import Post
+from . import views
 
 router = routers.DefaultRouter()
 router.register(r'post', PostView)
@@ -29,5 +30,7 @@ admin.site.register(Post)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('crsf/', views.csrf),
+    path('ping/', views.ping),
     path('', include(router.urls))
 ]
